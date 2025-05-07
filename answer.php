@@ -81,6 +81,10 @@
           $discount = $subTotal * $discountRate;
           $tax = ($subTotal - $discount) * $taxRate;
           $total = $subTotal - $discount + $tax;
+          $subTotal = number_format($subTotal, 2);
+          $discount = number_format($discount, 2);
+          $tax = number_format($tax, 2);
+          $total = number_format($total, 2);
 
           echo "<p>" . $quantity . " " . $pastry . "(s)</p>";
           echo "<p>Subtotal: $" . $subTotal . "</p>";
