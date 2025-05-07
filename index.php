@@ -4,7 +4,7 @@
 
 <head>
   <meta charset="utf-8" />
-  <meta name="description" content="Museum Entry Discount, with PHP" />
+  <meta name="description" content="Welcome to Yummy Pastries, in PHP" />
   <meta name="keywords" content="mths, icd2o" />
   <meta name="author" content="Olivia TD" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -15,67 +15,54 @@
   <link rel="icon" type="image/png" sizes="32x32" href="./favicon-32x32.png" />
   <link rel="icon" type="image/png" sizes="16x16" href="./favicon-16x16.png" />
   <link rel="manifest" href="./site.webmanifest" />
-  <title>Museum Entry Discount, with PHP</title>
+  <title>Welcome to Yummy Pastries, in PHP</title>
 </head>
 
 <body>
   <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
-  <script src="./js/script.js"></script>
   <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
     <header class="mdl-layout__header">
       <div class="mdl-layout__header-row">
-        <span class="mdl-layout-title">Museum Entry Discount, with PHP</span>
+        <span class="mdl-layout-title">Welcome to Yummy Pastries, in PHP</span>
       </div>
     </header>
     <main class="mdl-layout__content">
       <div class="right-image">
-        <img src="./images/museum.png" alt="Image of the outside of a museum." />
+        <img src="./images/cupcakes.jpg" alt="Image of pink cupcakes." />
       </div>
-      <div class="page-content">Please enter your age and the day of the week.</div>
       <br />
       <form action="answer.php" method="GET">
-        <h6>Age:</h6>
+        <div>
+          <label for="pastry">
+            <h5>Please select the pastry you would like to purchase.</h5>
+          </label>
+          <select name="pastry" id="pastry">
+            <option value="cupcake">Cupcake: $2.00</option>
+            <option value="donut">Donut: $1.50</option>
+            <option value="mini-cheesecake">Mini Cheesecake: $3.00</option>
+            <option value="macaron">Macaron: $1.00</option>
+            <option value="eclair">Eclair: $2.50</option>
+          </select>
+        </div>
+        <h5>Please enter the number of pastries you would like to purchase.</h5>
+        <h6>6 or more pastries will give you a 10% discout. You cannot purchase more than 20 pastries at a time.</h6>
         <div class="mdl-textfield mdl-js-textfield">
           <!-- input pattern attribute -->
-          <input
-            class="mdl-textfield__input"
-            type="number"
-            min="0"
-            id="age"
-            name="age" />
+          <input class="mdl-textfield__input" type="number" min="1" max="20" id="quantity" name="quantity" />
           <!-- mdl-textfield__label -->
-          <label class="mdl-textfield__label" for="age">Enter your age here...
+          <label class="mdl-textfield__label" for="quantity">Enter the number of pastries here...
           </label>
           <!-- class "mdl-textfield__error" -->
           <span class="mdl-textfield__error">Input is not a valid number.</span>
         </div>
         <br />
         <div>
-          <label for="day">
-            <h6>Choose the day of the week:</h6>
-          </label>
-          <select name="day" id="day">
-            <option value="monday">Monday</option>
-            <option value="tuesday">Tuesday</option>
-            <option value="wednesday">Wednesday</option>
-            <option value="thursday">Thursday</option>
-            <option value="friday">Friday</option>
-            <option value="saturday">Saturday</option>
-            <option value="sunday">Sunday</option>
-          </select>
-        </div>
-        <br />
-        <div>
           <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"
             type="check-button">
-            Check
+            Checkout
           </button>
         </div>
       </form>
-      <br />
-      <div class="page-content-answer">
-        <div id="result"></div>
-      </div>
     </main>
   </div>
 </body>

@@ -4,7 +4,7 @@
 
 <head>
   <meta charset="utf-8" />
-  <meta name="description" content="Museum Entry Discount, with PHP" />
+  <meta name="description" content="Welcome to Yummy Pastries, in PHP" />
   <meta name="keywords" content="mths, icd2o" />
   <meta name="author" content="Olivia TD" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -30,7 +30,7 @@
     sizes="16x16"
     href="./favicon-16x16.png" />
   <link rel="manifest" href="./site.webmanifest" />
-  <title>Museum Entry Discount, with PHP</title>
+  <title>Welcome to Yummy Pastries, in PHP</title>
 </head>
 
 <body>
@@ -38,29 +38,56 @@
   <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
     <header class="mdl-layout__header">
       <div class="mdl-layout__header-row">
-        <span class="mdl-layout-title">Museum Entry Discount, with PHP</span>
+        <span class="mdl-layout-title">Welcome to Yummy Pastries, in PHP</span>
       </div>
     </header>
     <main class="mdl-layout__content">
       <div class="right-image">
-        <img src="./images/museum.png" alt="Image of the outside of a museum." />
+        <img src="./images/cupcakes.jpg" alt="Image of pink cupcakes." />
       </div>
       <div class=" page-content-php">
         <div id="user-info">
 
           <?php
           // input
-          $age  = intval($_GET["age"]);
-          $dayOfTheWeek = $_GET["day"];
+          $pastry = $_GET["pastry"];
+          $quantity  = intval($_GET["quantity"]);
 
+          $itemCost = 0;
+          $discountRate = 0;
+          $discount = 0;
+          $subTotal = 0;
+          $taxRate = 0.13;
+          $tax = 0;
+          $total = 0;
 
-          if ($dayOfTheWeek == "tuesday" || $dayOfTheWeek == "thursday" || ($age > 12 && $age < 21)) {
-            echo "<p>You are eligible for the discount.</p>";
+          if ($pastry == "cupcake") {
+            $itemCost = 2.00;
+          } else if ($pastry == "donut") {
+            $itemCost = 1.50;
+          } else if ($pastry == "mini-cheesecake") {
+            $itemCost = 3.00;
+          } else if ($pastry == "macaron") {
+            $itemCost = 1.00;
           } else {
-            echo "<p>You are NOT eligible for the discount.</p>";
+            $itemCost = 2.50;
           }
-          ?>
 
+          if ($quantity > 5) {
+            $discountRate = 0.10;
+          }
+
+          $subTotal = $quantity * $itemCost;
+          $discount = $subTotal * $discountRate;
+          $tax = ($subTotal - $discount) * $taxRate;
+          $total = $subTotal - $discount + $tax;
+
+          echo "<p>" . $quantity . " " . $pastry . "(s)</p>";
+          echo "<p>Subtotal: $" . $subTotal . "</p>";
+          echo "<p>Discount: $" . $discount . "</p>";
+          echo "<p>Tax: $" . $tax . "</p>";
+          echo "<p>Total: $" . $total . "</p>";
+          ?>
         </div>
         <br />
         <div class="page-content-answer">
